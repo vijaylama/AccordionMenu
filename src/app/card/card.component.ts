@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Content } from "@angular/compiler/src/render3/r3_ast";
+// import { Content } from "@angular/compiler/src/render3/r3_ast";
 
 @Component({
   selector: "app-card",

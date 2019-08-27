@@ -52,6 +52,18 @@ export class AppComponent {
       this.content.secondMenu.isClicked = false;
     }
   }
+
+  giveContent(firstMenu, secondMenu, thirdMenu) {
+    if (firstMenu === true) {
+      return this.content.firstMenu;
+    }
+    if (secondMenu === true) {
+      return this.content.secondMenu;
+    }
+    if (thirdMenu === true) {
+      return this.content.thirdMenu;
+    }
+  }
   ngOnInit(): void {
     this.isSmartPhone = window.innerWidth < 381;
   }
