@@ -1,20 +1,121 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<!--<div class="container">-->
+<!--First Menu & contents-->
+<!--
+  <div class="header" (click)="onClick(content.firstMenu.title)">
+    First Menu <i class="fa fa-chevron-right"></i>
+  </div>
+  <app-card *ngIf="content.firstMenu.isClicked" class="card"></app-card>
+  <div *ngIf="content.firstMenu.isClicked">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ content.firstMenu.title }}</h5>
+        <p class="card-text">
+          {{ content.firstMenu.body }}
+        </p>
+      </div>
+    </div>
+  </div>
+-->
+<!--Second Menu & contents-->
+<!--
+  <div class="header" (click)="onClick(content.secondMenu.title)">
+    Second Menu <i class="fa fa-chevron-right"></i>
+  </div>
+  <div *ngIf="content.secondMenu.isClicked">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ content.secondMenu.title }}</h5>
+        <p class="card-text">
+          {{ content.secondMenu.body }}
+        </p>
+      </div>
+    </div>
+  </div>
+-->
+<!--Third Menu & contents-->
+<!--
+  <div class="header" (click)="onClick(content.thirdMenu.title)">
+    Third Menu <i class="fa fa-chevron-right"></i>
+  </div>
+  <div *ngIf="content.thirdMenu.isClicked">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ content.thirdMenu.title }}</h5>
+        <p class="card-text">
+          Lorem, ipsum dolor sit amet consectetur adipisicing
+          {{ content.thirdMenu.body }}
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+-->
 
+<div class="container">
+  <div class="menu-container">
+    <!--First Menu & contents-->
+    <div
+      [ngClass]="{
+        header: isSmartPhone,
+        'header-desktop': !isSmartPhone,
+        'clicked-header': content.firstMenu.isClicked
+      }"
+      (click)="onClick(content.firstMenu.title)"
+    >
+      First Menu <i class="fa fa-chevron-right"></i>
+    </div>
+    <app-card
+      *ngIf="content.firstMenu.isClicked && isSmartPhone"
+      [content]="content.firstMenu"
+      class="content"
+    ></app-card>
+    <!--Second Menu & contents-->
+    <div
+      [ngClass]="{
+        header: isSmartPhone,
+        'header-desktop': !isSmartPhone,
+        'clicked-header': content.secondMenu.isClicked
+      }"
+      (click)="onClick(content.secondMenu.title)"
+    >
+      Second Menu <i class="fa fa-chevron-right"></i>
+    </div>
+    <app-card
+      *ngIf="content.secondMenu.isClicked && isSmartPhone"
+      [content]="content.secondMenu"
+      class="content"
+    ></app-card>
+    <!--Third Menu & contents-->
+    <div
+      [ngClass]="{
+        header: isSmartPhone,
+        'header-desktop': !isSmartPhone,
+        'clicked-header': content.thirdMenu.isClicked
+      }"
+      (click)="onClick(content.thirdMenu.title)"
+    >
+      Third Menu <i class="fa fa-chevron-right"></i>
+    </div>
+    <app-card
+      *ngIf="content.thirdMenu.isClicked && isSmartPhone"
+      [content]="content.thirdMenu"
+      class="content"
+    ></app-card>
+  </div>
+  <!--For Desktop Version-->
+  <app-card
+    *ngIf="content.firstMenu.isClicked && !isSmartPhone"
+    [content]="content.firstMenu"
+    class="content"
+  ></app-card>
+  <app-card
+    *ngIf="content.secondMenu.isClicked && !isSmartPhone"
+    [content]="content.secondMenu"
+    class="content"
+  ></app-card>
+  <app-card
+    *ngIf="content.thirdMenu.isClicked && !isSmartPhone"
+    [content]="content.thirdMenu"
+    class="content"
+  ></app-card>
+</div>
