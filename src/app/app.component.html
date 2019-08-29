@@ -1,70 +1,28 @@
 <div class="container">
   <div class="menu-container">
-    <!--First Menu & contents-->
-    <div
-      [ngClass]="{
+    <ng-container *ngFor="let content of contents">
+      <div
+        [ngClass]="{
         header: isSmartPhone,
         'header-desktop': !isSmartPhone,
-        'clicked-header': content.firstMenu.isClicked
+        'clicked-header': content.isClicked
       }"
-      (click)="onClick(content.firstMenu.title)"
-    >
-      First Menu <i class="fa fa-chevron-right"></i>
-    </div>
-    <app-card
-      *ngIf="content.firstMenu.isClicked && isSmartPhone"
-      [content]="content.firstMenu"
-      class="content"
-    ></app-card>
-    <!--Second Menu & contents-->
-    <div
-      [ngClass]="{
-        header: isSmartPhone,
-        'header-desktop': !isSmartPhone,
-        'clicked-header': content.secondMenu.isClicked
-      }"
-      (click)="onClick(content.secondMenu.title)"
-    >
-      Second Menu <i class="fa fa-chevron-right"></i>
-    </div>
-    <app-card
-      *ngIf="content.secondMenu.isClicked && isSmartPhone"
-      [content]="content.secondMenu"
-      class="content"
-    ></app-card>
-    <!--Third Menu & contents-->
-    <div
-      [ngClass]="{
-        header: isSmartPhone,
-        'header-desktop': !isSmartPhone,
-        'clicked-header': content.thirdMenu.isClicked
-      }"
-      (click)="onClick(content.thirdMenu.title)"
-    >
-      Third Menu <i class="fa fa-chevron-right"></i>
-    </div>
-    <app-card
-      *ngIf="content.thirdMenu.isClicked && isSmartPhone"
-      [content]="content.thirdMenu"
-      class="content"
-    ></app-card>
+        (click)="onClick(content)"
+      >
+        {{content.name}} <i class="fa fa-chevron-right"></i>
+      </div>
+      <app-card
+        *ngIf="isSmartPhone&&content.isClicked"
+        [content]="content"
+        class="content"
+      ></app-card>
+    </ng-container>
   </div>
-  <!--For Desktop Version-->
-  <div *ngIf="!isSmartPhone">
+  <div *ngIf="!isSmartPhone&&currentMenu&&currentMenu.isClicked">
     <app-card
-      *ngIf="
-        content.firstMenu.isClicked ||
-        content.secondMenu.isClicked ||
-        (content.thirdMenu.isClicked && !isSmartPhone)
-      "
-      [content]="
-        giveContent(
-          content.firstMenu.isClicked,
-          content.secondMenu.isClicked,
-          content.thirdMenu.isClicked
-        )
-      "
+      [content]="currentMenu"
       class="content"
     ></app-card>
   </div>
 </div>
+
