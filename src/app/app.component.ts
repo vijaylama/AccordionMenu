@@ -1,12 +1,11 @@
 import { Component, HostListener } from "@angular/core";
 
-export interface Menu{
-  name:string;
-  title:string;
-  body:string;
-  isClicked:boolean;
+export interface Menu {
+  name: string;
+  title: string;
+  body: string;
+  isClicked: boolean;
 }
-
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -15,7 +14,7 @@ export interface Menu{
 export class AppComponent {
   isSmartPhone: boolean;
   currentMenu: Menu;
-  contents: Menu[]=[
+  contents: Menu[] = [
     {
       name: "First Menu",
       title: "First Title",
@@ -33,7 +32,8 @@ export class AppComponent {
     {
       name: "Third Menu",
       title: "Third Title",
-      body: "sdaf, hdsfa dolor sit amet consectetur adipisicing elit. Ut, ab praesentium magnam similique voluptatibus omn sdafsd dignissimos corporis illum dfas.",
+      body:
+        "sdaf, hdsfa dolor sit amet consectetur adipisicing elit. Ut, ab praesentium magnam similique voluptatibus omn sdafsd dignissimos corporis illum dfas.",
       isClicked: false
     }
   ];
@@ -45,10 +45,10 @@ export class AppComponent {
   }
 
   onClick(menu): void {
-    for(let menuTmp of this.contents){
+    for (let menuTmp of this.contents) {
       if (menu === menuTmp) {
         menuTmp.isClicked = !menuTmp.isClicked;
-      }else{
+      } else {
         menuTmp.isClicked = false;
       }
     }
